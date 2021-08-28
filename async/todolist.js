@@ -18,79 +18,99 @@ the asynchronism with callbacks.
 */
 
 // call back 8
-function studingProgramming() {
-  setTimeout(function () {
-    console.log(`Finally! I'm gonna start my classes.`);
-  }, 1000);
+function studingProgramming(e) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`Finally! I'm gonna start my classes.`);
+    }, 1000);
+    resolve(e);
+  });
 }
 
 // callback 7
-function meditating(callback) {
-  setTimeout(function () {
-    console.log(`This time is reserved for my metitation`);
-    callback();
-  }, 1000);
+function meditating(e) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`This time is reserved for my metitation`);
+      resolve(e);
+    }, 1000);
+  });
 }
 
 // callback 6
-function goingToCoffee(callback) {
-  setTimeout(function () {
-    console.log(`I got to go to my coffee, because its getting cold.`);
-    callback();
-  }, 1000);
+function goingToCoffee(e) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`I got to go to my coffee, because its getting cold.`);
+      resolve(e);
+    }, 1000);
+  });
 }
 
 // callback 5
-function takingAnsietyCourse(theme, callback) {
-  setTimeout(function () {
-    console.log(`Taking my ${theme} course.`);
-    callback();
-  }, 1000);
+function takingAnsietyCourse(theme) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`Taking my ${theme} course.`);
+      resolve(theme);
+    }, 1000);
+  });
 }
 
 // callback 1
-function turnOffAlarm(callback, nombre) {
-  setTimeout(function () {
-    console.log(`Hello, I'm ${nombre} and I'm turning off my alarm.`);
-    callback(nombre);
-  }, 0.5);
+function turnOffAlarm(nombre) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`Hello, I'm ${nombre} and I'm turning off my alarm.`);
+      resolve(nombre);
+    }, 0.5);
+  });
 }
 
 // callback 4
-function turningOnDevice(device, callback) {
-  setTimeout(function () {
-    console.log(`Turning on the ${device}...`);
-    callback();
-  }, 100);
+function turningOnDevice(device) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`Turning on the ${device}...`);
+      resolve(device);
+    }, 100);
+  });
 }
 
 // callback 2
-function washingMyFace(callback) {
-  setTimeout(function () {
-    console.log("Now, I'm washing my face.");
-    callback();
-  }, 1000);
+function washingMyFace() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log("Now, I'm washing my face.");
+      resolve();
+    }, 1000);
+  });
 }
 
 // callback 3
-function preparingMyCoffee(drink, callback) {
-  setTimeout(function () {
-    console.log(`Then, I gonna prepare my ${drink}`);
-    callback();
-  }, 2000);
+function preparingMyCoffee(drink) {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+      console.log(`Then, I gonna prepare my ${drink}`);
+      resolve(drink);
+    }, 2000);
+  });
 }
 
-function myDailyRoutine(callback) {
-  washingMyFace(function () {
-    preparingMyCoffee("coffee", callback);
-  });
-  callback()
-}
+// This is the way to make async functions using promises
 
-turnOffAlarm(function () {
-  myDailyRoutine(function () {
+turnOffAlarm("Ivan")
+  .then(washingMyFace)
+  .then(preparingMyCoffee('coffee'))
+  .then(turningOnDevice('Laptop'))
+  .then(takingAnsietyCourse("Ansiety"))
+  .then(studingProgramming)
+  .catch((error) => {
+    console.error("It was an error.");
+    console.error(error);
   });
-}, "Ivan");
+
+// This is the way that I've used to get an async functions using callbacks.
 
 // turnOffAlarm(function () {
 //   washingMyFace(function () {
