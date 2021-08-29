@@ -6,6 +6,8 @@ let web = process.env.WEB ||'no tengo web';
 Everything must made in upper case.*/
 
 console.log('Hola ' + nombre );
-console.log('Mi web es ' + web);     
+console.log('Mi web es ' + web);  
+
+// This is a test for the laptop device.
 
 
