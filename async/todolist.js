@@ -88,7 +88,7 @@ function washingMyFace() {
 }
 
 // callback 3
-function preparingMyCoffee(drink) {
+function preparingMyCoffee(drink)  {
   return new Promise((resolve, reject) => {
     setTimeout(function () {
       console.log(`Then, I gonna prepare my ${drink}`);
