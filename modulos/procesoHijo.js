@@ -5,16 +5,16 @@ const { exec, spawn } = require("child_process");
 const exec = require("child_process").exec; */
 
 // This is how we obtain the execution of another file in NodeJS.
-// exec("node modulos/console.js", (err, stdout, sterr) => {
-//   if (err) {
-//     console.error(err);
-//     return false;
-//   }
+exec("node modulos/console.js", (err, stdout, sterr) => {
+  if (err) {
+    console.error(err);
+    return false;
+  }
 
-//   console.log(stdout);
-// });
+  console.log(stdout);
+});
 
-// How to use Spawn.
+// How to use Spawn. Invokes a new <process className=""></process>
 
 let proceso = spawn("ls", ["-la"]);
 
