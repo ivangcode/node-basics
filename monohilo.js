@@ -1,4 +1,4 @@
-// It's very important to check the variables en functions 'cause if something gets stopped everything stops.
+// It's very important to check the variables and functions 'cause if something gets stopped everything stops.
 console.log("Hola mundo!");
 
 let i = 0;
