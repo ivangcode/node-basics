@@ -2,7 +2,7 @@
 const fs = require("fs");
 const stream = require("stream");
 const util = require("util");
-// The place where we stored the data received.
+// The place where we'll stored the data received.
 let data = "";
 
 // This will be our entrance.
@@ -21,8 +21,9 @@ readableStream.on("end", function () {
   console.log(data);
 });
 
+// ----
 
-// STREAM TO WRITE
+// STREAM TO WRITTING
 // We're gonna make received and read a data.
 
 // This gonna create a string for transfrom (read and write).
